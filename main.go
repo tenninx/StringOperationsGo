@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
 
 	"xyrisz.com/dev/packages/StringOperations/StringOperations"
 )
@@ -32,7 +33,7 @@ func main() {
 		fmt.Println("X  - Exit")
 
 		scanner.Scan()
-		choice = scanner.Text()
+		choice = strings.ToLower(scanner.Text())
 
 		if choice == "x" {
 			break
