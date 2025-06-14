@@ -47,6 +47,8 @@ func main() {
 		switch choice {
 		case "1":
 			output = StringOperations.FindDuplicatedChars(input, false)
+		case "2":
+			output = StringOperations.FindUniqueChars(input, false)
 		}
 
 		fmt.Println("The output is: " + output)
