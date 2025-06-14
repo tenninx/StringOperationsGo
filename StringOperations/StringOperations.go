@@ -6,7 +6,7 @@ import (
 )
 
 func FindDuplicatedChars(p_strInput string, p_isCaseSensitive bool) string {
-	p_strInput = CheckCaseSensitivity(p_strInput, p_isCaseSensitive)
+	p_strInput = ProcessCaseSensitivity(p_strInput, p_isCaseSensitive)
 	var chars map[string]int = make(map[string]int)
 
 	for i := 0; i < len(p_strInput); i++ {
@@ -23,7 +23,7 @@ func FindDuplicatedChars(p_strInput string, p_isCaseSensitive bool) string {
 }
 
 func FindUniqueChars(p_strInput string, p_isCaseSensitive bool) string {
-	p_strInput = CheckCaseSensitivity(p_strInput, p_isCaseSensitive)
+	p_strInput = ProcessCaseSensitivity(p_strInput, p_isCaseSensitive)
 	var chars map[string]int = make(map[string]int)
 
 	for i := 0; i < len(p_strInput); i++ {
@@ -40,7 +40,7 @@ func FindUniqueChars(p_strInput string, p_isCaseSensitive bool) string {
 }
 
 func RemoveDuplicatedChars(p_strInput string, p_isCaseSensitive bool) string {
-	p_strInput = CheckCaseSensitivity(p_strInput, p_isCaseSensitive)
+	p_strInput = ProcessCaseSensitivity(p_strInput, p_isCaseSensitive)
 	var chars map[string]int = make(map[string]int)
 
 	for i := 0; i < len(p_strInput); i++ {
@@ -54,7 +54,7 @@ func RemoveDuplicatedChars(p_strInput string, p_isCaseSensitive bool) string {
 }
 
 func ReverseString(p_strInput string, p_isCaseSensitive bool) string {
-	p_strInput = CheckCaseSensitivity(p_strInput, p_isCaseSensitive)
+	p_strInput = ProcessCaseSensitivity(p_strInput, p_isCaseSensitive)
 	var reversed string
 
 	for i := len(p_strInput) - 1; i >= 0; i-- {
@@ -64,7 +64,7 @@ func ReverseString(p_strInput string, p_isCaseSensitive bool) string {
 	return reversed
 }
 
-func CheckCaseSensitivity(p_strInput string, p_isCaseSensitive bool) string {
+func ProcessCaseSensitivity(p_strInput string, p_isCaseSensitive bool) string {
 	if !p_isCaseSensitive {
 		return strings.ToLower(p_strInput)
 	}
