@@ -53,6 +53,17 @@ func RemoveDuplicatedChars(p_strInput string, p_isCaseSensitive bool) string {
 	return ConvertStringMapToString(chars)
 }
 
+func ReverseString(p_strInput string, p_isCaseSensitive bool) string {
+	p_strInput = CheckCaseSensitivity(p_strInput, p_isCaseSensitive)
+	var reversed string
+
+	for i := len(p_strInput) - 1; i >= 0; i-- {
+		reversed += string(p_strInput[i])
+	}
+
+	return reversed
+}
+
 func CheckCaseSensitivity(p_strInput string, p_isCaseSensitive bool) string {
 	if !p_isCaseSensitive {
 		return strings.ToLower(p_strInput)
