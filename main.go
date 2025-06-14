@@ -49,6 +49,8 @@ func main() {
 			output = StringOperations.FindDuplicatedChars(input, false)
 		case "2":
 			output = StringOperations.FindUniqueChars(input, false)
+		case "3":
+			output = StringOperations.RemoveDuplicatedChars(input, false)
 		}
 
 		fmt.Println("The output is: " + output)

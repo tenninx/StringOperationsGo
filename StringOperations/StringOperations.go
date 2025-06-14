@@ -39,6 +39,20 @@ func FindUniqueChars(p_strInput string, p_isCaseSensitive bool) string {
 	return ConvertStringMapToString(chars)
 }
 
+func RemoveDuplicatedChars(p_strInput string, p_isCaseSensitive bool) string {
+	p_strInput = CheckCaseSensitivity(p_strInput, p_isCaseSensitive)
+	var chars map[string]int = make(map[string]int)
+
+	for i := 0; i < len(p_strInput); i++ {
+		_, ok := chars[string(p_strInput[i])]
+		if !ok {
+			chars[string(p_strInput[i])] = 0
+		}
+	}
+
+	return ConvertStringMapToString(chars)
+}
+
 func CheckCaseSensitivity(p_strInput string, p_isCaseSensitive bool) string {
 	if !p_isCaseSensitive {
 		return strings.ToLower(p_strInput)
