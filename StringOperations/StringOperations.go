@@ -1,6 +1,7 @@
 package StringOperations
 
 import (
+	"bytes"
 	"slices"
 	"strings"
 )
@@ -62,6 +63,23 @@ func ReverseString(p_strInput string, p_isCaseSensitive bool) string {
 	}
 
 	return reversed
+}
+
+func ReverseWordOrderInSentence(p_strInput string, p_isCaseSensitive bool) string {
+	p_strInput = ProcessCaseSensitivity(p_strInput, p_isCaseSensitive)
+	var reversed bytes.Buffer
+
+	words := strings.Split(p_strInput, " ")
+
+	for i := len(words) - 1; i >= 0; i-- {
+		reversed.WriteString(words[i] + " ")
+	}
+
+	if reversed.Len() > 0 {
+		reversed.Truncate(reversed.Len() - 1) // Remove the trailing space
+	}
+
+	return reversed.String()
 }
 
 func ProcessCaseSensitivity(p_strInput string, p_isCaseSensitive bool) string {
