@@ -65,18 +65,22 @@ func ReverseString(p_strInput string, p_isCaseSensitive bool) string {
 	return reversed
 }
 
-func ReverseWordOrderInSentence(p_strInput string, p_isCaseSensitive bool) string {
+func ReverseStringInSentence(p_strInput string, p_isCaseSensitive bool) string {
 	p_strInput = ProcessCaseSensitivity(p_strInput, p_isCaseSensitive)
 	var reversed bytes.Buffer
 
 	words := strings.Split(p_strInput, " ")
 
-	for i := len(words) - 1; i >= 0; i-- {
-		reversed.WriteString(words[i] + " ")
+	for _, element := range words {
+		for i := len(element) - 1; i >= 0; i-- {
+			reversed.WriteString(string(element[i]))
+		}
+
+		reversed.WriteString(" ")
 	}
 
 	if reversed.Len() > 0 {
-		reversed.Truncate(reversed.Len() - 1) // Remove the trailing space
+		reversed.Truncate(reversed.Len() - 1)
 	}
 
 	return reversed.String()

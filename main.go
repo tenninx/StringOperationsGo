@@ -21,7 +21,7 @@ func main() {
 		fmt.Println("2  - Get all unique characters in a string")
 		fmt.Println("3  - Remove duplicated characters in a string")
 		fmt.Println("4  - Reverse a string")
-		fmt.Println("5  - Reverse word order in a sentence")
+		fmt.Println("5  - Reverse a string in a sentence but maintain word order")
 		fmt.Println("6  - Get word count")
 		fmt.Println("7  - Check palindrome")
 		fmt.Println("8  - Find character(s) with max occurrences")
@@ -54,7 +54,7 @@ func main() {
 		case "4":
 			output = StringOperations.ReverseString(input, true)
 		case "5":
-			output = StringOperations.ReverseWordOrderInSentence(input, true)
+			output = StringOperations.ReverseStringInSentence(input, true)
 		}
 
 		fmt.Println("The output is: " + output)
