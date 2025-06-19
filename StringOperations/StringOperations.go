@@ -3,6 +3,7 @@ package StringOperations
 import (
 	"bytes"
 	"slices"
+	"strconv"
 	"strings"
 )
 
@@ -84,6 +85,14 @@ func ReverseStringInSentence(p_strInput string, p_isCaseSensitive bool) string {
 	}
 
 	return reversed.String()
+}
+
+func GetWordCount(p_strInput string, p_isCaseSensitive bool) string {
+	p_strInput = ProcessCaseSensitivity(p_strInput, p_isCaseSensitive)
+
+	p_strInput = strings.Trim(p_strInput, " ")
+
+	return strconv.Itoa(len(strings.Split(p_strInput, " ")))
 }
 
 func ProcessCaseSensitivity(p_strInput string, p_isCaseSensitive bool) string {

@@ -55,6 +55,8 @@ func main() {
 			output = StringOperations.ReverseString(input, true)
 		case "5":
 			output = StringOperations.ReverseStringInSentence(input, true)
+		case "6":
+			output = StringOperations.GetWordCount(input, false)
 		}
 
 		fmt.Println("The output is: " + output)
