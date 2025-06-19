@@ -57,6 +57,8 @@ func main() {
 			output = StringOperations.ReverseStringInSentence(input, true)
 		case "6":
 			output = StringOperations.GetWordCount(input, false)
+		case "7":
+			output = StringOperations.IsPalindrome(input, false)
 		}
 
 		fmt.Println("The output is: " + output)

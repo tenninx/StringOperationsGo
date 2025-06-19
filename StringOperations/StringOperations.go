@@ -90,9 +90,24 @@ func ReverseStringInSentence(p_strInput string, p_isCaseSensitive bool) string {
 func GetWordCount(p_strInput string, p_isCaseSensitive bool) string {
 	p_strInput = ProcessCaseSensitivity(p_strInput, p_isCaseSensitive)
 
-	p_strInput = strings.Trim(p_strInput, " ")
+	p_strInput = strings.TrimSpace(p_strInput)
 
 	return strconv.Itoa(len(strings.Split(p_strInput, " ")))
+}
+
+func IsPalindrome(p_strInput string, p_isCaseSensitive bool) string {
+	p_strInput = ProcessCaseSensitivity(p_strInput, p_isCaseSensitive)
+
+	p_strInput = strings.TrimSpace(p_strInput)
+	p_strInput = strings.Replace(p_strInput, " ", "", -1)
+
+	for i := 0; i < len(p_strInput)/2; i++ {
+		if string(p_strInput[i]) != string(p_strInput[len(p_strInput)-1-i]) {
+			return "false"
+		}
+	}
+
+	return "true"
 }
 
 func ProcessCaseSensitivity(p_strInput string, p_isCaseSensitive bool) string {
