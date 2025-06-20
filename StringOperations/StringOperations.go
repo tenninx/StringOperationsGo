@@ -110,6 +110,34 @@ func IsPalindrome(p_strInput string, p_isCaseSensitive bool) string {
 	return "true"
 }
 
+func FindMaxOccurrences(p_strInput string, p_isCaseSensitive bool) string {
+	p_strInput = ProcessCaseSensitivity(p_strInput, p_isCaseSensitive)
+	var chars map[string]int = make(map[string]int)
+
+	max := 0
+	for i := 0; i < len(p_strInput); i++ {
+		chars[string(p_strInput[i])] = chars[string(p_strInput[i])] + 1
+
+		if chars[string(p_strInput[i])] > max {
+			max = chars[string(p_strInput[i])]
+		}
+	}
+
+	var result bytes.Buffer
+
+	for key, value := range chars {
+		if value == max {
+			result.WriteString(key + " ")
+		}
+	}
+
+	if result.Len() > 0 {
+		result.Truncate(result.Len() - 1)
+	}
+
+	return result.String()
+}
+
 func ProcessCaseSensitivity(p_strInput string, p_isCaseSensitive bool) string {
 	if !p_isCaseSensitive {
 		return strings.ToLower(p_strInput)

@@ -59,6 +59,8 @@ func main() {
 			output = StringOperations.GetWordCount(input, false)
 		case "7":
 			output = StringOperations.IsPalindrome(input, false)
+		case "8":
+			output = StringOperations.FindMaxOccurrences(input, false)
 		}
 
 		fmt.Println("The output is: " + output)
