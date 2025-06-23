@@ -66,7 +66,7 @@ func main() {
 		case "10":
 			output = StringOperations.GetFirstLetterCapital(input, false)
 		case "11":
-			output = StringOperations.GetWordsMatchFirstLetter(input, false)
+			output = StringOperations.GetWordsMatchPrefix(input, false)
 		case "12":
 			output = StringOperations.GetWordsMatchAnywhere(input, false)
 		}

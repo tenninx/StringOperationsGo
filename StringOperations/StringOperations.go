@@ -176,13 +176,13 @@ func GetFirstLetterCapital(p_strInput string, p_isCaseSensitive bool) string {
 	return result.String()
 }
 
-func GetWordsMatchFirstLetter(p_firstLetter string, p_isCaseSensitive bool) string {
-	p_firstLetter = ProcessCaseSensitivity(p_firstLetter, p_isCaseSensitive)
+func GetWordsMatchPrefix(p_prefix string, p_isCaseSensitive bool) string {
+	p_prefix = ProcessCaseSensitivity(p_prefix, p_isCaseSensitive)
 
 	var result bytes.Buffer
 
 	for _, word := range toMatch {
-		if strings.HasPrefix(word, p_firstLetter) {
+		if strings.HasPrefix(word, p_prefix) {
 			result.WriteString(word + " ")
 		}
 	}
