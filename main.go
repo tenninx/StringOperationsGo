@@ -63,6 +63,8 @@ func main() {
 			output = StringOperations.FindMaxOccurrences(input, false)
 		case "9":
 			output = StringOperations.GetAllSubstrings(input, false)
+		case "10":
+			output = StringOperations.GetFirstLetterCapital(input, false)
 		}
 
 		fmt.Println("The output is: " + output)
