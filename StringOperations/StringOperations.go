@@ -7,6 +7,8 @@ import (
 	"strings"
 )
 
+var toMatch = [...]string{"hello", "world", "hi", "my", "home", "we", "are", "the", "champion", "c#", "is", "a", "great", "languague", "champ", "campaign", "champagne", "challenge", "chameleon", "chipotle", "castlevania"}
+
 func FindDuplicatedChars(p_strInput string, p_isCaseSensitive bool) string {
 	p_strInput = ProcessCaseSensitivity(p_strInput, p_isCaseSensitive)
 	var chars map[string]int = make(map[string]int)
@@ -168,6 +170,20 @@ func GetFirstLetterCapital(p_strInput string, p_isCaseSensitive bool) string {
 	for _, word := range words {
 		if len(word) > 0 {
 			result.WriteString(strings.ToUpper(word[:1]) + " ")
+		}
+	}
+
+	return result.String()
+}
+
+func GetWordsMatchFirstLetter(p_firstLetter string, p_isCaseSensitive bool) string {
+	p_firstLetter = ProcessCaseSensitivity(p_firstLetter, p_isCaseSensitive)
+
+	var result bytes.Buffer
+
+	for _, word := range toMatch {
+		if strings.HasPrefix(word, p_firstLetter) {
+			result.WriteString(word + " ")
 		}
 	}
 

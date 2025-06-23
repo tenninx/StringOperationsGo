@@ -65,6 +65,8 @@ func main() {
 			output = StringOperations.GetAllSubstrings(input, false)
 		case "10":
 			output = StringOperations.GetFirstLetterCapital(input, false)
+		case "11":
+			output = StringOperations.GetWordsMatchFirstLetter(input, false)
 		}
 
 		fmt.Println("The output is: " + output)
