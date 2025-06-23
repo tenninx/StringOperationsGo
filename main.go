@@ -61,6 +61,8 @@ func main() {
 			output = StringOperations.IsPalindrome(input, false)
 		case "8":
 			output = StringOperations.FindMaxOccurrences(input, false)
+		case "9":
+			output = StringOperations.GetAllSubstrings(input, false)
 		}
 
 		fmt.Println("The output is: " + output)

@@ -134,6 +134,30 @@ func FindMaxOccurrences(p_strInput string, p_isCaseSensitive bool) string {
 	return result.String() + "(" + strconv.Itoa(max) + ")"
 }
 
+func GetAllSubstrings(p_strInput string, p_isCaseSensitive bool) string {
+	p_strInput = ProcessCaseSensitivity(p_strInput, p_isCaseSensitive)
+	var substrings map[string]bool = make(map[string]bool)
+
+	for i := 0; i < len(p_strInput); i++ {
+		for j := 0; j < len(p_strInput)-i; j++ {
+			substring := p_strInput[i : i+j+1]
+
+			_, ok := substrings[substring]
+			if !ok {
+				substrings[substring] = false
+			}
+		}
+	}
+
+	var result bytes.Buffer
+
+	for key := range substrings {
+		result.WriteString("\n" + key)
+	}
+
+	return result.String()
+}
+
 func ProcessCaseSensitivity(p_strInput string, p_isCaseSensitive bool) string {
 	if !p_isCaseSensitive {
 		return strings.ToLower(p_strInput)
