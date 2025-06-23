@@ -204,6 +204,31 @@ func GetWordsMatchAnywhere(p_anyLetters string, p_isCaseSensitive bool) string {
 	return result.String()
 }
 
+func GetWordsMatchAnywhereRandom(p_anyLetters string, p_isCaseSensitive bool) string {
+	p_anyLetters = ProcessCaseSensitivity(p_anyLetters, p_isCaseSensitive)
+
+	var result bytes.Buffer
+
+	for _, word := range toMatch {
+		var currentIdx = -1
+		for i := 0; i < len(p_anyLetters); i++ {
+			var idx = strings.Index(word, string(p_anyLetters[i]))
+			if idx == -1 || idx < currentIdx {
+				break
+			}
+
+			if i+1 < len(p_anyLetters) {
+				currentIdx = idx
+				continue
+			}
+
+			result.WriteString(word + " ")
+		}
+	}
+
+	return result.String()
+}
+
 func ProcessCaseSensitivity(p_strInput string, p_isCaseSensitive bool) string {
 	if !p_isCaseSensitive {
 		return strings.ToLower(p_strInput)

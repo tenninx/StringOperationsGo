@@ -29,7 +29,7 @@ func main() {
 		fmt.Println("10 - Get and capitalize the first letter of each word in a sentence")
 		fmt.Println("11 - Get a list of words matching the given first letter")
 		fmt.Println("12 - Get a list of words matching the given continuous character(s) anywhere")
-		fmt.Println("13 - Get a list of words matching the given character(s) randomly anywhere")
+		fmt.Println("13 - Get a list of words matching the given character(s) in order")
 		fmt.Println("X  - Exit")
 
 		scanner.Scan()
@@ -69,6 +69,8 @@ func main() {
 			output = StringOperations.GetWordsMatchPrefix(input, false)
 		case "12":
 			output = StringOperations.GetWordsMatchAnywhere(input, false)
+		case "13":
+			output = StringOperations.GetWordsMatchAnywhereRandom(input, false)
 		}
 
 		fmt.Println("The output is: " + output)
