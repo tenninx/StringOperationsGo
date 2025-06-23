@@ -131,11 +131,7 @@ func FindMaxOccurrences(p_strInput string, p_isCaseSensitive bool) string {
 		}
 	}
 
-	if result.Len() > 0 {
-		result.Truncate(result.Len() - 1)
-	}
-
-	return result.String()
+	return result.String() + "(" + strconv.Itoa(max) + ")"
 }
 
 func ProcessCaseSensitivity(p_strInput string, p_isCaseSensitive bool) string {
