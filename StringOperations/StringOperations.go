@@ -190,6 +190,20 @@ func GetWordsMatchFirstLetter(p_firstLetter string, p_isCaseSensitive bool) stri
 	return result.String()
 }
 
+func GetWordsMatchAnywhere(p_anyLetters string, p_isCaseSensitive bool) string {
+	p_anyLetters = ProcessCaseSensitivity(p_anyLetters, p_isCaseSensitive)
+
+	var result bytes.Buffer
+
+	for _, word := range toMatch {
+		if strings.Contains(word, p_anyLetters) {
+			result.WriteString(word + " ")
+		}
+	}
+
+	return result.String()
+}
+
 func ProcessCaseSensitivity(p_strInput string, p_isCaseSensitive bool) string {
 	if !p_isCaseSensitive {
 		return strings.ToLower(p_strInput)
