@@ -2,7 +2,6 @@ package StringOperations
 
 import (
 	"bytes"
-	"slices"
 	"strconv"
 	"strings"
 )
@@ -15,7 +14,8 @@ func FindDuplicatedChars(p_strInput string, p_isCaseSensitive bool) string {
 
 	for i := 0; i < len(p_strInput); i++ {
 		substring := p_strInput[i+1:]
-		if slices.Contains([]rune(substring), rune(p_strInput[i])) {
+
+		if strings.Contains(substring, string(p_strInput[i])) {
 			_, ok := chars[string(p_strInput[i])]
 			if !ok {
 				chars[string(p_strInput[i])] = 0
