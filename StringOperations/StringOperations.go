@@ -10,7 +10,7 @@ import (
 var toMatch = [...]string{"hello", "world", "hi", "my", "home", "we", "are", "the", "champion", "c#", "is", "a", "great", "languague", "champ", "campaign", "champagne", "challenge", "chameleon", "chipotle", "castlevania"}
 
 func FindDuplicatedChars(p_strInput string, p_isCaseSensitive bool) string {
-	p_strInput = ProcessCaseSensitivity(p_strInput, p_isCaseSensitive)
+	p_strInput = ProcessInput(p_strInput, p_isCaseSensitive)
 	var chars map[string]int = make(map[string]int)
 
 	for i := 0; i < len(p_strInput); i++ {
@@ -27,7 +27,7 @@ func FindDuplicatedChars(p_strInput string, p_isCaseSensitive bool) string {
 }
 
 func FindUniqueChars(p_strInput string, p_isCaseSensitive bool) string {
-	p_strInput = ProcessCaseSensitivity(p_strInput, p_isCaseSensitive)
+	p_strInput = ProcessInput(p_strInput, p_isCaseSensitive)
 	var chars map[string]int = make(map[string]int)
 
 	for i := 0; i < len(p_strInput); i++ {
@@ -44,7 +44,7 @@ func FindUniqueChars(p_strInput string, p_isCaseSensitive bool) string {
 }
 
 func RemoveDuplicatedChars(p_strInput string, p_isCaseSensitive bool) string {
-	p_strInput = ProcessCaseSensitivity(p_strInput, p_isCaseSensitive)
+	p_strInput = ProcessInput(p_strInput, p_isCaseSensitive)
 	var chars map[string]int = make(map[string]int)
 
 	for i := 0; i < len(p_strInput); i++ {
@@ -58,7 +58,7 @@ func RemoveDuplicatedChars(p_strInput string, p_isCaseSensitive bool) string {
 }
 
 func ReverseString(p_strInput string, p_isCaseSensitive bool) string {
-	p_strInput = ProcessCaseSensitivity(p_strInput, p_isCaseSensitive)
+	p_strInput = ProcessInput(p_strInput, p_isCaseSensitive)
 	var reversed string
 
 	for i := len(p_strInput) - 1; i >= 0; i-- {
@@ -69,10 +69,10 @@ func ReverseString(p_strInput string, p_isCaseSensitive bool) string {
 }
 
 func ReverseStringInSentence(p_strInput string, p_isCaseSensitive bool) string {
-	p_strInput = ProcessCaseSensitivity(p_strInput, p_isCaseSensitive)
+	p_strInput = ProcessInput(p_strInput, p_isCaseSensitive)
 	var reversed bytes.Buffer
 
-	words := strings.Split(p_strInput, " ")
+	words := strings.Fields(p_strInput)
 
 	for _, element := range words {
 		for i := len(element) - 1; i >= 0; i-- {
@@ -90,17 +90,14 @@ func ReverseStringInSentence(p_strInput string, p_isCaseSensitive bool) string {
 }
 
 func GetWordCount(p_strInput string, p_isCaseSensitive bool) string {
-	p_strInput = ProcessCaseSensitivity(p_strInput, p_isCaseSensitive)
+	p_strInput = ProcessInput(p_strInput, p_isCaseSensitive)
 
-	p_strInput = strings.TrimSpace(p_strInput)
-
-	return strconv.Itoa(len(strings.Split(p_strInput, " ")))
+	return strconv.Itoa(len(strings.Fields(p_strInput)))
 }
 
 func IsPalindrome(p_strInput string, p_isCaseSensitive bool) string {
-	p_strInput = ProcessCaseSensitivity(p_strInput, p_isCaseSensitive)
+	p_strInput = ProcessInput(p_strInput, p_isCaseSensitive)
 
-	p_strInput = strings.TrimSpace(p_strInput)
 	p_strInput = strings.Replace(p_strInput, " ", "", -1)
 
 	for i := 0; i < len(p_strInput)/2; i++ {
@@ -113,7 +110,7 @@ func IsPalindrome(p_strInput string, p_isCaseSensitive bool) string {
 }
 
 func FindMaxOccurrences(p_strInput string, p_isCaseSensitive bool) string {
-	p_strInput = ProcessCaseSensitivity(p_strInput, p_isCaseSensitive)
+	p_strInput = ProcessInput(p_strInput, p_isCaseSensitive)
 	var chars map[string]int = make(map[string]int)
 
 	max := 0
@@ -137,7 +134,7 @@ func FindMaxOccurrences(p_strInput string, p_isCaseSensitive bool) string {
 }
 
 func GetAllSubstrings(p_strInput string, p_isCaseSensitive bool) string {
-	p_strInput = ProcessCaseSensitivity(p_strInput, p_isCaseSensitive)
+	p_strInput = ProcessInput(p_strInput, p_isCaseSensitive)
 	var substrings map[string]bool = make(map[string]bool)
 
 	for i := 0; i < len(p_strInput); i++ {
@@ -161,9 +158,9 @@ func GetAllSubstrings(p_strInput string, p_isCaseSensitive bool) string {
 }
 
 func GetFirstLetterCapital(p_strInput string, p_isCaseSensitive bool) string {
-	p_strInput = ProcessCaseSensitivity(p_strInput, p_isCaseSensitive)
+	p_strInput = ProcessInput(p_strInput, p_isCaseSensitive)
 
-	var words []string = strings.Split(p_strInput, " ")
+	var words []string = strings.Fields(p_strInput)
 
 	var result bytes.Buffer
 
@@ -177,7 +174,7 @@ func GetFirstLetterCapital(p_strInput string, p_isCaseSensitive bool) string {
 }
 
 func GetWordsMatchPrefix(p_prefix string, p_isCaseSensitive bool) string {
-	p_prefix = ProcessCaseSensitivity(p_prefix, p_isCaseSensitive)
+	p_prefix = ProcessInput(p_prefix, p_isCaseSensitive)
 
 	var result bytes.Buffer
 
@@ -191,7 +188,7 @@ func GetWordsMatchPrefix(p_prefix string, p_isCaseSensitive bool) string {
 }
 
 func GetWordsMatchAnywhere(p_anyLetters string, p_isCaseSensitive bool) string {
-	p_anyLetters = ProcessCaseSensitivity(p_anyLetters, p_isCaseSensitive)
+	p_anyLetters = ProcessInput(p_anyLetters, p_isCaseSensitive)
 
 	var result bytes.Buffer
 
@@ -205,7 +202,7 @@ func GetWordsMatchAnywhere(p_anyLetters string, p_isCaseSensitive bool) string {
 }
 
 func GetWordsMatchAnywhereRandom(p_anyLetters string, p_isCaseSensitive bool) string {
-	p_anyLetters = ProcessCaseSensitivity(p_anyLetters, p_isCaseSensitive)
+	p_anyLetters = ProcessInput(p_anyLetters, p_isCaseSensitive)
 
 	var result bytes.Buffer
 
@@ -229,7 +226,8 @@ func GetWordsMatchAnywhereRandom(p_anyLetters string, p_isCaseSensitive bool) st
 	return result.String()
 }
 
-func ProcessCaseSensitivity(p_strInput string, p_isCaseSensitive bool) string {
+func ProcessInput(p_strInput string, p_isCaseSensitive bool) string {
+	p_strInput = strings.TrimSpace(p_strInput)
 	if !p_isCaseSensitive {
 		return strings.ToLower(p_strInput)
 	}
