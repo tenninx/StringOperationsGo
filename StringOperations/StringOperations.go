@@ -59,13 +59,13 @@ func RemoveDuplicatedChars(p_strInput string, p_isCaseSensitive bool) string {
 
 func ReverseString(p_strInput string, p_isCaseSensitive bool) string {
 	p_strInput = ProcessInput(p_strInput, p_isCaseSensitive)
-	var reversed string
+	var reversed bytes.Buffer
 
 	for i := len(p_strInput) - 1; i >= 0; i-- {
-		reversed += string(p_strInput[i])
+		reversed.WriteString(string(p_strInput[i]))
 	}
 
-	return reversed
+	return reversed.String()
 }
 
 func ReverseStringInSentence(p_strInput string, p_isCaseSensitive bool) string {
@@ -74,16 +74,14 @@ func ReverseStringInSentence(p_strInput string, p_isCaseSensitive bool) string {
 
 	words := strings.Fields(p_strInput)
 
-	for _, element := range words {
+	for idx, element := range words {
 		for i := len(element) - 1; i >= 0; i-- {
 			reversed.WriteString(string(element[i]))
 		}
 
-		reversed.WriteString(" ")
-	}
-
-	if reversed.Len() > 0 {
-		reversed.Truncate(reversed.Len() - 1)
+		if idx < len(words)-1 {
+			reversed.WriteString(" ")
+		}
 	}
 
 	return reversed.String()
