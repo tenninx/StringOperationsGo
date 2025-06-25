@@ -17,7 +17,6 @@ func FindDuplicatedChars(p_strInput string, p_isCaseSensitive bool) string {
 		substring := p_strInput[i+1:]
 
 		if strings.Contains(substring, string(p_strInput[i])) {
-
 			if !slices.Contains(dupChars, string(p_strInput[i])) {
 				dupChars = append(dupChars, string(p_strInput[i]))
 			}
@@ -29,19 +28,15 @@ func FindDuplicatedChars(p_strInput string, p_isCaseSensitive bool) string {
 
 func FindUniqueChars(p_strInput string, p_isCaseSensitive bool) string {
 	p_strInput = ProcessInput(p_strInput, p_isCaseSensitive)
-	var chars map[string]int = make(map[string]int)
+	var uniqueChars []string
 
 	for i := 0; i < len(p_strInput); i++ {
-		chars[string(p_strInput[i])] = chars[string(p_strInput[i])] + 1
-	}
-
-	for r, count := range chars {
-		if count != 1 {
-			delete(chars, r)
+		if strings.Count(p_strInput, string(p_strInput[i])) == 1 {
+			uniqueChars = append(uniqueChars, string(p_strInput[i]))
 		}
 	}
 
-	return ConvertStringMapToString(chars)
+	return strings.Join(uniqueChars, "")
 }
 
 func RemoveDuplicatedChars(p_strInput string, p_isCaseSensitive bool) string {
