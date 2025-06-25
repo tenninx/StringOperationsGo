@@ -2,6 +2,7 @@ package StringOperations
 
 import (
 	"bytes"
+	"slices"
 	"strconv"
 	"strings"
 )
@@ -10,20 +11,20 @@ var toMatch = [...]string{"hello", "world", "hi", "my", "home", "we", "are", "th
 
 func FindDuplicatedChars(p_strInput string, p_isCaseSensitive bool) string {
 	p_strInput = ProcessInput(p_strInput, p_isCaseSensitive)
-	var chars map[string]int = make(map[string]int)
+	var dupChars []string
 
 	for i := 0; i < len(p_strInput); i++ {
 		substring := p_strInput[i+1:]
 
 		if strings.Contains(substring, string(p_strInput[i])) {
-			_, ok := chars[string(p_strInput[i])]
-			if !ok {
-				chars[string(p_strInput[i])] = 0
+
+			if !slices.Contains(dupChars, string(p_strInput[i])) {
+				dupChars = append(dupChars, string(p_strInput[i]))
 			}
 		}
 	}
 
-	return ConvertStringMapToString(chars)
+	return strings.Join(dupChars, "")
 }
 
 func FindUniqueChars(p_strInput string, p_isCaseSensitive bool) string {
