@@ -41,16 +41,15 @@ func FindUniqueChars(p_strInput string, p_isCaseSensitive bool) string {
 
 func RemoveDuplicatedChars(p_strInput string, p_isCaseSensitive bool) string {
 	p_strInput = ProcessInput(p_strInput, p_isCaseSensitive)
-	var chars map[string]int = make(map[string]int)
+	var uniqueChars []string
 
 	for i := 0; i < len(p_strInput); i++ {
-		_, ok := chars[string(p_strInput[i])]
-		if !ok {
-			chars[string(p_strInput[i])] = 0
+		if !slices.Contains(uniqueChars, string(p_strInput[i])) {
+			uniqueChars = append(uniqueChars, string(p_strInput[i]))
 		}
 	}
 
-	return ConvertStringMapToString(chars)
+	return strings.Join(uniqueChars, "")
 }
 
 func ReverseString(p_strInput string, p_isCaseSensitive bool) string {
