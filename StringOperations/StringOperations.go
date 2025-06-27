@@ -115,7 +115,7 @@ func FindMaxOccurrences(p_strInput string, p_isCaseSensitive bool) string {
 		}
 	}
 
-	var result bytes.Buffer
+	var result strings.Builder
 
 	for key, value := range chars {
 		if value == max {
