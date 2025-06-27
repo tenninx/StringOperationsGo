@@ -159,6 +159,7 @@ func TestFindMaxOccurrences(t *testing.T) {
 	}{
 		{"hello world", false, "l", 3},
 		{"abcde", false, "a b c d e", 1},
+		{"", false, "", 0},
 		{"aaabb ccc dd", false, "a c", 3},
 	}
 
@@ -173,6 +174,10 @@ func TestFindMaxOccurrences(t *testing.T) {
 func CheckUnorderedResult(result string, expected string, occurence int) bool {
 	var resultChars []string = strings.Split(result, " ")
 	var expectedChars []string = strings.Split(expected, " ")
+
+	if len(resultChars) == 1 && resultChars[0] == "(0)" && occurence == 0 {
+		return true
+	}
 
 	if !slices.Contains(resultChars, "("+strconv.Itoa(occurence)+")") {
 		return false
