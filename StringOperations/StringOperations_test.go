@@ -165,13 +165,52 @@ func TestFindMaxOccurrences(t *testing.T) {
 
 	for _, test := range tests {
 		result := FindMaxOccurrences(test.input, test.isCaseSensitive)
-		if !CheckUnorderedResult(result, test.expected, test.count) {
+		if !CheckUnorderedResultWithOccurence(result, test.expected, test.count) {
 			t.Errorf("FindMaxOccurrences(%q, %v) = %q; want %q", test.input, test.isCaseSensitive, result, test.expected)
 		}
 	}
 }
 
-func CheckUnorderedResult(result string, expected string, occurence int) bool {
+func TestGetAllSubstrings(t *testing.T) {
+	tests := []struct {
+		input           string
+		isCaseSensitive bool
+		expected        string
+	}{
+		{"india", false, "india indi ind in i ndia ndi nd n dia di d ia a"},
+		{"", false, ""},
+	}
+
+	for _, test := range tests {
+		result := GetAllSubstrings(test.input, test.isCaseSensitive)
+		if !CheckUnorderedResult(result, test.expected) {
+			t.Errorf("GetAllSubstrings(%q, %v) = %q; want %q", test.input, test.isCaseSensitive, result, test.expected)
+		}
+	}
+}
+
+func CheckUnorderedResult(result string, expected string) bool {
+	var resultChars []string = strings.Split(result, "\n")
+	var expectedChars []string = strings.Split(expected, " ")
+
+	if result == "" && expected == "" {
+		return true
+	}
+
+	if len(resultChars)-1 != len(expectedChars) {
+		return false
+	}
+
+	for _, char := range expectedChars {
+		if !slices.Contains(resultChars, char) {
+			return false
+		}
+	}
+
+	return true
+}
+
+func CheckUnorderedResultWithOccurence(result string, expected string, occurence int) bool {
 	var resultChars []string = strings.Split(result, " ")
 	var expectedChars []string = strings.Split(expected, " ")
 
