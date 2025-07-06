@@ -189,6 +189,26 @@ func TestGetAllSubstrings(t *testing.T) {
 	}
 }
 
+func TestGetFirstLetterCapital(t *testing.T) {
+	tests := []struct {
+		input           string
+		isCaseSensitive bool
+		expected        string
+	}{
+		{"hello world", false, "H W "},
+		{"Good morning everything and the world", false, "G M E A T W "},
+		{"", false, ""},
+		{"abc def ghi", false, "A D G "},
+	}
+
+	for _, test := range tests {
+		result := GetFirstLetterCapital(test.input, test.isCaseSensitive)
+		if result != test.expected {
+			t.Errorf("GetFirstLetterCapital(%q, %v) = %q; want %q", test.input, test.isCaseSensitive, result, test.expected)
+		}
+	}
+}
+
 func CheckUnorderedResult(result string, expected string) bool {
 	var resultChars []string = strings.Split(result, "\n")
 	var expectedChars []string = strings.Split(expected, " ")
