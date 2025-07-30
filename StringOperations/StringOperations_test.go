@@ -209,6 +209,26 @@ func TestGetFirstLetterCapital(t *testing.T) {
 	}
 }
 
+func TestGetWordsMatchPrefix(t *testing.T) {
+	tests := []struct {
+		prefix          string
+		isCaseSensitive bool
+		expected        string
+	}{
+		{"ch", false, "champion champ champagne challenge chameleon chipotle "},
+		{"cham", false, "champion champ champagne chameleon "},
+		{"cam", false, "campaign "},
+		{"h", false, "hello hi home "},
+	}
+
+	for _, test := range tests {
+		result := GetWordsMatchPrefix(test.prefix, test.isCaseSensitive)
+		if result != test.expected {
+			t.Errorf("GetWordsMatchPrefix(%q, %v) = %q; want %q", test.prefix, test.isCaseSensitive, result, test.expected)
+		}
+	}
+}
+
 func CheckUnorderedResult(result string, expected string) bool {
 	var resultChars []string = strings.Split(result, "\n")
 	var expectedChars []string = strings.Split(expected, " ")
