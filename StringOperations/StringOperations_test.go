@@ -229,6 +229,25 @@ func TestGetWordsMatchPrefix(t *testing.T) {
 	}
 }
 
+func TestGetWordsMatchAnywhere(t *testing.T) {
+	tests := []struct {
+		substring       string
+		isCaseSensitive bool
+		expected        string
+	}{
+		{"am", false, "champion champ campaign champagne chameleon "},
+		{"tl", false, "chipotle castlevania "},
+		{"ll", false, "hello challenge "},
+	}
+
+	for _, test := range tests {
+		result := GetWordsMatchAnywhere(test.substring, test.isCaseSensitive)
+		if result != test.expected {
+			t.Errorf("GetWordsMatchAnywhere(%q, %v) = %q; want %q", test.substring, test.isCaseSensitive, result, test.expected)
+		}
+	}
+}
+
 func CheckUnorderedResult(result string, expected string) bool {
 	var resultChars []string = strings.Split(result, "\n")
 	var expectedChars []string = strings.Split(expected, " ")
