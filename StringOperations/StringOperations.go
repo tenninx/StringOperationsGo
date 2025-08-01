@@ -202,8 +202,9 @@ func GetWordsMatchAnywhereRandom(p_anyLetters string, p_isCaseSensitive bool) st
 	for _, word := range toMatch {
 		var currentIdx = -1
 		for i := 0; i < len(p_anyLetters); i++ {
-			var idx = strings.Index(word, string(p_anyLetters[i]))
-			if idx == -1 || idx < currentIdx {
+			substring := word[currentIdx+1:]
+			var idx = strings.Index(substring, string(p_anyLetters[i]))
+			if idx == -1 {
 				break
 			}
 

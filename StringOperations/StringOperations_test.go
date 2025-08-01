@@ -248,6 +248,25 @@ func TestGetWordsMatchAnywhere(t *testing.T) {
 	}
 }
 
+func TestGetWordsMatchAnywhereRandom(t *testing.T) {
+	tests := []struct {
+		substring       string
+		isCaseSensitive bool
+		expected        string
+	}{
+		{"chm", false, "champion champ champagne chameleon "},
+		{"aa", false, "languague campaign champagne castlevania "},
+		{"eo", false, "hello chameleon "},
+	}
+
+	for _, test := range tests {
+		result := GetWordsMatchAnywhereRandom(test.substring, test.isCaseSensitive)
+		if result != test.expected {
+			t.Errorf("GetWordsMatchAnywhereRandom(%q, %v) = %q; want %q", test.substring, test.isCaseSensitive, result, test.expected)
+		}
+	}
+}
+
 func CheckUnorderedResult(result string, expected string) bool {
 	var resultChars []string = strings.Split(result, "\n")
 	var expectedChars []string = strings.Split(expected, " ")
